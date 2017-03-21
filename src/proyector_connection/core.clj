@@ -11,7 +11,7 @@
         commands (map #(hash-map (keyword %1) (eval %1)) commands)]
     (into {} commands)))
 
-(defmacro with-connection
+(defmacro with
   [connection & body]
   `(binding
      [*connection* ~connection]
