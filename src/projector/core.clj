@@ -1,6 +1,5 @@
 (ns projector.core
-  (:require [projector.device :refer [connect transmit closeable-device]]
-            [projector.commands :refer :all])
+  (:require [projector.device :refer [connect transmit closeable-device]])
   (:gen-class))
 
 (def ^:dynamic *device* nil)
@@ -10,7 +9,7 @@
 (defn- load-commands
   []
   (let [commands (keys (ns-publics commands-ns))
-        commands (map #(hash-map (keyword %1) (eval %1)) commands)]
+        commands (map #(hash-map (keyword %1) (var-get (ns-resolve commands-ns %1))) commands)]
     (into {} commands)))
 
 (defmacro with-device
@@ -28,4 +27,3 @@
         commands (load-commands)
         command-value (-> commands command option)]
     (transmit device command-value)))
-
