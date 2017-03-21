@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.org/ieer/projector.svg?branch=master)](https://travis-ci.org/ieer/projector)
+
+
 # Projector
 
 Control Dell 4220 Projector through a connection (ex. RS232)
