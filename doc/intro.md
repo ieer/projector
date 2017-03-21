@@ -1,3 +1,3 @@
-# Introduction to proyector-connection
+# Introduction to projector
 
-Control Dell 4220 Proyector through a connection (ex. RS232)
+Control Dell 4220 Projector through a connection (ex. RS232)
