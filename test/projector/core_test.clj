@@ -2,9 +2,9 @@
   (:require [clojure.test :refer :all]
             [projector.core :refer :all]
             [projector.commands :refer :all]
-            [projector.rs232 :refer [->RS232]]))
+            [projector.rs232 :refer [create-a-connection]]))
 
-(def rs232 (->RS232 "/dev/ttyUSB0"))
+(def rs232 (create-a-connection "/dev/tty1"))
 
 (deftest commander
   (testing "Testing commands"

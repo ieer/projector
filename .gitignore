@@ -67,15 +67,12 @@ fabric.properties
 ### Intellij Patch ###
 # Comment Reason: https://github.com/joeblau/gitignore.io/issues/186#issuecomment-215987721
 
-# *.iml
-# modules.xml
-# .idea/misc.xml
-# *.ipr
+*.iml
+modules.xml
+.idea/misc.xml
+*.ipr
+.idea/*
 
 # End of https://www.gitignore.io/api/intellij,clojure
 /.idea/preferred-vcs.xml
-/.idea/compiler.xml
-/.idea/misc.xml
-/.idea/modules.xml
-/.idea/vcs.xml
-/proyector-connection.iml
+
