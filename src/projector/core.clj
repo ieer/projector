@@ -27,3 +27,8 @@
         commands (load-commands)
         command-value (-> commands command option)]
     (transmit device command-value)))
+
+(defn available-commands
+  []
+  (let [commands (load-commands)]
+    (keys commands)))
