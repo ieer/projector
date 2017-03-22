@@ -4,7 +4,7 @@
             [projector.commands :refer :all]
             [projector.rs232 :refer [create-a-connection]]))
 
-(def rs232 (create-a-connection "/dev/tty1"))
+(def rs232 (create-a-connection "dummy"))
 
 (deftest commander
   (testing "Testing commands"
