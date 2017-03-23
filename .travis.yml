@@ -2,6 +2,9 @@ language: clojure
 jdk:
   - oraclejdk7
 
+after_script:
+  - bash -ex test/coveralls.sh
+
 before_deploy:
   - lein jar
   - lein deploy releases
