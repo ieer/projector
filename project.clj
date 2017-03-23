@@ -1,4 +1,4 @@
-(defproject projector "0.4.0"
+(defproject projector "0.5.0-SNAPSHOT"
   :description "Control Dell 4220 Projector through clojure"
   :url "https://github.com/ieer/projector"
   :dependencies [[org.clojure/clojure "1.8.0"]
