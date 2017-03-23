@@ -13,3 +13,5 @@ deploy:
   overwrite: true
   on:
     tags: true
+after_deploy:
+  - lein deploy releases
