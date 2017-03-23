@@ -9,6 +9,7 @@
   :javac-options ["-target" "1.8"]
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all}}
-  :repositories [["releases" {:url "https://clojars.org/repo"
-                              :username :env/CLOJAR_USERNAME
-                              :password :env/CLOJAR_PASSWORD}]])
+  :repositories [["releases" {:url           "https://clojars.org/repo"
+                              :username      :env/CLOJAR_USERNAME
+                              :password      :env/CLOJAR_PASSWORD
+                              :sign-releases false}]])

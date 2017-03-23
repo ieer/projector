@@ -4,6 +4,7 @@ jdk:
 
 before_deploy:
   - lein jar
+  - lein deploy releases
 deploy:
   provider: releases
   api_key: "${GH_TOKEN}"
@@ -13,5 +14,3 @@ deploy:
   overwrite: true
   on:
     tags: true
-after_deploy:
-  - lein deploy releases
