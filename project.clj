@@ -1,8 +1,10 @@
-(defproject projector "0.5.0-SNAPSHOT"
+(defproject projector "0.6.0"
   :description "Control Dell 4220 Projector through clojure"
   :url "https://github.com/ieer/projector"
+  :license {:name "GNU General Public License v3.0"
+            :url  "https://github.com/ieer/projector/blob/master/LICENSE"}
   :dependencies [[org.clojure/clojure "1.8.0"]
-                 [clj-serial "2.0.4-SNAPSHOT"]]
+                 [clj-serial "2.0.3"]]
   :main ^:skip-aot projector.core
   :javac-options ["-target" "1.8"]
   :target-path "target/%s"
