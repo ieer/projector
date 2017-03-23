@@ -4,12 +4,11 @@ jdk:
 
 before_deploy:
   - lein uberjar
-  - echo $TRAVIS_BUILD_DIR
 deploy:
   provider: releases
   api_key: "${GH_TOKEN}"
   file_glob: true
-  file: $TRAVIS_BUILD_DIR/*standalone.jar
+  file: $TRAVIS_BUILD_DIR/target/uberjar/*standalone.jar
   skip_cleanup: true
   overwrite: true
   on:
