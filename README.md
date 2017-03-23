@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/ieer/projector.svg?branch=master)](https://travis-ci.org/ieer/projector)
 [![Clojars Project](https://img.shields.io/clojars/v/projector.svg)](https://clojars.org/projector)
+[![Coverage Status](https://coveralls.io/repos/github/ieer/projector/badge.svg?branch=master)](https://coveralls.io/github/ieer/projector?branch=master)
 
 # Projector
 
