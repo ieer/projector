@@ -17,12 +17,11 @@
   `(binding [*device* ~device]
      (with-open [device# (closeable-device *device*)]
        (do
-         (connect *device*)
          ~@body))))
 
 (defn projector
   [command option]
-  {:pre [(not (nil? *device*))]}
+  {:pre [(not (nil? *device*)) (contains? (keys (load-commands)) command)]}
   (let [device *device*
         commands (load-commands)
         command-value (-> commands command option)]
