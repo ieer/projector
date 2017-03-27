@@ -1,5 +1,6 @@
 (ns projector.rs232
-  (:require [serial.core :refer [open close! write]])
+  (:require [serial.core :refer [open close! write]]
+            [projector.device :refer [connect]])
   (:import (projector.device Device)))
 
 (def dummy-port "dummy")

@@ -1,5 +1,5 @@
 (ns projector.core
-  (:require [projector.device :refer [connect transmit closeable-device]]
+  (:require [projector.device :refer [transmit closeable-device]]
             [projector.commands]))
 
 (def ^:dynamic *device* nil)
