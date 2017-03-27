@@ -7,7 +7,11 @@
 
 (deftype RS232Projector [^:volatile-mutable port]
   Device
-  (connect [this] (do (set! port (open port)) this))
+  (connect [this] (do (set! port
+                            (if (= port dummy-port)
+                              dummy-port
+                              (open port)))
+                      this))
   (disconnect [this])
   (transmit [this command] (if (not= port dummy-port)
                              (do (write port command) command)
