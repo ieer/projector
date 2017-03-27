@@ -21,7 +21,7 @@
 
 (defn projector
   [command option]
-  {:pre [(not (nil? *device*)) (contains? (vector (keys (load-commands))) command)]}
+  {:pre [(not (nil? *device*))]}
   (let [device *device*
         commands (load-commands)
         command-value (-> commands command option)]
