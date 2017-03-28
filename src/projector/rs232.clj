@@ -25,7 +25,7 @@
 
 (extend-type RS232Projector
   Device
-  (connect [this] (set! *serial-port* (open-port port)))
+  (connect [this] (set! *serial-port* (open-port (:port this))))
   (disconnect [this])
   (transmit [this command] (send-command *serial-port* command)))
 
