@@ -6,7 +6,6 @@
 (def ^:private dummy-port "dummy")
 (def ^:dynamic ^:private *serial-port* nil)
 
-(deftype RS232Projector [port])
 
 (defn- if-not-dummy-port
   ([port not] (if-not-dummy-port not dummy-port))
@@ -23,9 +22,9 @@
     (if-not-dummy-port port (write port command))
     command))
 
-(extend-type RS232Projector
+(deftype RS232Projector [port]
   Device
-  (connect [this] (set! *serial-port* (open-port (:port this))))
+  (connect [this] (set! *serial-port* (open-port port)))
   (disconnect [this])
   (transmit [this command] (send-command *serial-port* command)))
 
