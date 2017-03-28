@@ -7,10 +7,9 @@
 (def ^:dynamic ^:private *serial-port* nil)
 
 
-(defn- if-not-dummy-port
-  ([port not] (if-not-dummy-port not dummy-port))
-  ([port not yes]
-   #(if (not= port dummy-port) not yes)))
+(defmacro if-not-dummy-port
+  [port not & [yes]]
+  `(if (not= ~port dummy-port) ~not (or ~yes dummy-port)))
 
 (defn- open-port
   [port]
@@ -24,7 +23,7 @@
 
 (deftype RS232Projector [port]
   Device
-  (connect [this] (set! *serial-port* (open-port port)))
+  (connect [this] (alter-var-root #'*serial-port* (constantly (open-port port))))
   (disconnect [this])
   (transmit [this command] (send-command *serial-port* command)))
 
