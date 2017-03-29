@@ -9,5 +9,5 @@
   "Device protocol with common device functions"
   ^{:author "Santiago de Pedro"
     :added  "1.0"}
-  (disconnect [this] "Disconnect device")
+  (close [this] "Disconnect device")
   (transmit [this command] "Send command to device"))

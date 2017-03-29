@@ -3,10 +3,8 @@
     :author "Santiago de Pedro"
     :added  "1.0"}
   projector.rs232
-  (:require [serial.core :refer [open close! write]]
-            [projector.device :refer [disconnect]])
-  (:import (projector.device Device)
-           (java.io Closeable)))
+  (:require [serial.core :refer [open close! write]])
+  (:import (projector.device Device)))
 
 (def ^:private dummy-port "dummy")
 (def ^:private dummy-port? #(= % dummy-port))
@@ -50,10 +48,8 @@
 ; Implements Device protocol and Closeable interface
 (deftype RS232Projector [port]
   Device
-  (disconnect [this] (close-port port 2))
-  (transmit [this command] (send-command port command))
-  Closeable
-  (close [this] (disconnect this)))
+  (close [this] (close-port port 2))
+  (transmit [this command] (send-command port command)))
 
 
 (defn create-a-connection
