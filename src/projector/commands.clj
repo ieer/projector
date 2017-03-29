@@ -1,7 +1,5 @@
 (ns projector.commands
-  "Projector commands namespace"
-  ^{:author "Santiago de Pedro"
-    :added "1.0" })
+  "Projector commands namespace")
 
 (def power
   {:on  [0xBE 0xEF 0x10 0x05 0x00 0xC6 0xFF 0x11 0x11 0x01 0x00 0x01]
