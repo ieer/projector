@@ -8,9 +8,10 @@
 
 (deftest commander
   (testing "Testing commands"
-    (is (= (with-device rs232 (projector :power :on)) (:on power)))
-    (is (= (with-device rs232 (projector :power :off)) (:off power)))
-    (is (= (with-device rs232 (projector :hide :off)) (:off hide))))
+    (with-device rs232
+                 (is (= (projector :power :on) (:on power)))
+                 (is (= (projector :power :off) (:off power)))
+                 (is (= (projector :hide :off) (:off hide)))))
 
   (testing "Available commands"
     (let [commands (available-commands)]

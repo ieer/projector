@@ -9,15 +9,18 @@
 
 (defmacro if-not-dummy-port
   [port not]
-  `(if (not-dummy-port? port) ~not dummy-port))
-
-(defmacro when-not-dummy-port
-  [port not]
-  `(if (dummy-port? ~port) ~@not nil))
+  `(if (not-dummy-port? ~port) ~not dummy-port))
 
 (defn- open-port
   [port]
   (if-not-dummy-port port (open port)))
+
+(defn- close-port
+  [port & [time-to-wait]]
+  (if-not-dummy-port port (future
+                            (Thread/sleep (* 1000 (or time-to-wait 1)))
+                            (close! port)
+                            true)))
 
 (defn- send-command
   [port command]
@@ -27,13 +30,11 @@
 
 (deftype RS232Projector [port]
   Device
-  (connect [this] (alter-var-root #'*serial-port* (constantly (open-port port))))
-  (disconnect [this])
-  (transmit [this command] (send-command *serial-port* command)))
+  (disconnect [this] (close-port port 2))
+  (transmit [this command] (send-command port command)))
 
 
 (defn create-a-connection
   [port]
-  (doto
-    (RS232Projector. port)
-    (connect)))
+  (let [serial-port (open-port port)]
+    (RS232Projector. serial-port)))
