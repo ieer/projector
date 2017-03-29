@@ -3,7 +3,6 @@
 
 
 (defprotocol Device
-  (connect [this])
   (disconnect [this])
   (transmit [this command]))
 

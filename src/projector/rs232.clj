@@ -1,15 +1,19 @@
 (ns projector.rs232
-  (:require [serial.core :refer [open close! write]]
-            [projector.device :refer [connect]])
+  (:require [serial.core :refer [open close! write]])
   (:import (projector.device Device)))
 
 (def ^:private dummy-port "dummy")
-(def ^:dynamic ^:private *serial-port* nil)
+(def ^:private dummy-port? #(= % dummy-port))
+(def ^:private not-dummy-port? #(not (dummy-port? %)))
 
 
 (defmacro if-not-dummy-port
-  [port not & [yes]]
-  `(if (not= ~port dummy-port) ~not (or ~yes dummy-port)))
+  [port not]
+  `(if (not-dummy-port? port) ~not dummy-port))
+
+(defmacro when-not-dummy-port
+  [port not]
+  `(if (dummy-port? ~port) ~@not nil))
 
 (defn- open-port
   [port]
