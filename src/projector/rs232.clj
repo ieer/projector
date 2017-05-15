@@ -9,6 +9,7 @@
 (def ^:private dummy-port "dummy")
 (def ^:private dummy-port? #(= % dummy-port))
 (def ^:private not-dummy-port? #(not (dummy-port? %)))
+(def ^:private baud-rate 19200)
 
 
 (defmacro if-not-dummy-port
@@ -23,7 +24,7 @@
   ^{:author "Santiago de Pedro"
     :added  "1.0"}
   [port]
-  (if-not-dummy-port port (open port)))
+  (if-not-dummy-port port (open port :baud-rate baud-rate)))
 
 (defn- close-port
   "Close a rs232 port"
