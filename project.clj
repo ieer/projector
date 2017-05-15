@@ -1,4 +1,4 @@
-(defproject projector "0.8.0"
+(defproject projector "0.9.0"
   :description "Control Dell 4220 Projector through clojure"
   :url "https://github.com/ieer/projector"
   :license {:name "GNU General Public License v3.0"
